@@ -2,5 +2,14 @@
     hello: String
   }
   type Mutation{
-    hello(text: String!): String
+    createPost(author: String!, comment: String!): Post!
   }
+
+type Subscription {
+  postCreated: Post
+}
+
+type Post{
+  author: String!
+  comment: String!
+}
