@@ -48,6 +48,10 @@ const server = new ApolloServer({
   ],
 });
 
+app.get('/health', (_req, res) => {
+  res.status(200);
+})
+
 const PORT = 5000;
 const start = async () => {
   await server.start();
