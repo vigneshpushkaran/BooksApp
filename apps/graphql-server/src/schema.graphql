@@ -1,0 +1,6 @@
+  type Query {
+    hello: String
+  }
+  type Mutation{
+    hello(text: String!): String
+  }
