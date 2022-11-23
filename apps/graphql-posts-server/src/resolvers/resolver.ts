@@ -15,7 +15,7 @@ export const resolvers = {
     },
   },
   Query: {
-    hello: () => 'world',
+    helloFromPosts: () => 'world',
   },
   Mutation: {
     createPost: (_parent, args, _ctx) => {

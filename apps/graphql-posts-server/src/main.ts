@@ -4,12 +4,11 @@ import { ApolloServerPluginDrainHttpServer } from '@apollo/server/plugin/drainHt
 import { makeExecutableSchema } from '@graphql-tools/schema';
 import { WebSocketServer } from 'ws';
 import { useServer } from 'graphql-ws/lib/use/ws';
-import express from 'express';
-import http from 'http';
-import cors from 'cors';
-import bodyParser from 'body-parser';
+import * as express from 'express';
+import * as http from 'http';
+import * as bodyParser from 'body-parser';
 import { resolvers } from './resolvers/resolver';
-import typeDefs from './utils/schema';
+import { typeDefs } from './utils/schema';
 
 // Create the schema, which will be used separately by ApolloServer and
 // the WebSocket server.
@@ -18,7 +17,6 @@ const schema = makeExecutableSchema({ typeDefs, resolvers });
 
 const app = express();
 const httpServer = http.createServer(app);
-
 
 // Create our WebSocket server using the HTTP server we just set up.
 const wsServer = new WebSocketServer({
@@ -35,8 +33,8 @@ const server = new ApolloServer({
   plugins: [
     // Proper shutdown for the HTTP server.
     ApolloServerPluginDrainHttpServer({ httpServer }),
-     // Proper shutdown for the WebSocket server.
-     {
+    // Proper shutdown for the WebSocket server.
+    {
       async serverWillStart() {
         return {
           async drainServer() {
@@ -56,7 +54,6 @@ const PORT = 5000;
 const start = async () => {
   await server.start();
   app.use('/graphql',
-    cors<cors.CorsRequest>(),
     bodyParser.json(),
     expressMiddleware(server),
   );

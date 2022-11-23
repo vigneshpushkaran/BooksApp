@@ -1,5 +1,5 @@
 type Query {
-  hello: String
+  helloFromPosts: String
 }
 type Mutation {
   createPost(author: String!, comment: String!): Post!

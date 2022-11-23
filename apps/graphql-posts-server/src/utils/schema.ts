@@ -1,6 +1,4 @@
-import path from 'path';
-import fs from 'fs';
+import * as path from 'path';
+import * as fs from 'fs';
 
-const schemaText = fs.readFileSync(path.resolve(__dirname, 'schema.graphql')).toString(); 
-
-export default schemaText;
+export const typeDefs = fs.readFileSync(path.resolve(__dirname,'schema.graphql')).toString(); 
