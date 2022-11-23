@@ -10,6 +10,9 @@ export const resolvers = {
         return payload.postCreated.author !== "VP";
       }),
     },
+    postCreatedWithId: {
+      subscribe: (_,args) => pubsub.asyncIterator([`POST_CREATED_${args.id}`])
+    },
   },
   Query: {
     hello: () => 'world',
@@ -18,6 +21,11 @@ export const resolvers = {
     createPost: (_parent, args, _ctx) => {
       console.log({ args });
       pubsub.publish('POST_CREATED', { postCreated: args });
+      return args;
+    },
+    createPostWithId: (_parent, args, _ctx) => {
+      console.log({ args });
+      pubsub.publish(`POST_CREATED_${args.id}`, { postCreatedWithId: args });
       return args;
     }
   }

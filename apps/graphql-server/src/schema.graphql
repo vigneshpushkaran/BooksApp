@@ -1,15 +1,23 @@
-  type Query {
-    hello: String
-  }
-  type Mutation{
-    createPost(author: String!, comment: String!): Post!
-  }
+type Query {
+  hello: String
+}
+type Mutation {
+  createPost(author: String!, comment: String!): Post!
+  createPostWithId(author: String!, comment: String!, id: String!): PostWithId!
+}
 
 type Subscription {
   postCreated: Post
+  postCreatedWithId(id: String!): PostWithId
 }
 
-type Post{
+type Post {
   author: String!
   comment: String!
+}
+
+type PostWithId {
+  author: String!
+  comment: String!
+  id: String!
 }
