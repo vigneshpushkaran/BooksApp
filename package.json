@@ -2,9 +2,13 @@
   "name": "books",
   "version": "0.0.0",
   "license": "MIT",
-  "scripts": {},
+  "scripts": {
+    "create-supergraph": "./node_modules/.bin/rover supergraph compose --config ./apps/graphql-router/supergraph-compose.yml > ./apps/graphql-router/fed-schema.graphql",
+    "start:router:local": "./apps/graphql-router/router --config ./apps/graphql-router/router-local.yaml --supergraph ./apps/graphql-router/fed-schema.graphql"
+  },
   "private": true,
   "devDependencies": {
+    "@apollo/rover": "^0.7.0",
     "@faker-js/faker": "^7.6.0",
     "@nrwl/cli": "15.2.1",
     "@nrwl/eslint-plugin-nx": "15.2.1",

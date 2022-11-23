@@ -1,0 +1,9 @@
+# Router File, will be used later
+server:
+  listen: 127.0.0.1:5555
+override_subgraph_url:
+  login: http://localhost:5001/graphql
+headers:
+  all:
+    - propagate:
+        matching: .*

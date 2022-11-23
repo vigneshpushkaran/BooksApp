@@ -3,6 +3,21 @@ type Query {
 }
 type Mutation {
   login: loginId!
+  signUp(userName: String): signUpResult
+}
+
+union signUpResult =  signUp | error
+
+type error{
+  message: String!
+  code: String!
+}
+
+type signUp {
+  userName: String!
+  id: String!
+  status: String!
+  message: String!
 }
 
 type loginId {

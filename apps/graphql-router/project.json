@@ -1,0 +1,15 @@
+{
+  "name": "graphql-router",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/graphql-router/src",
+  "projectType": "application",
+  "targets": {
+    "serve": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "commands": ["yarn start:router:local"]
+      }
+    }
+  },
+  "tags": []
+}
