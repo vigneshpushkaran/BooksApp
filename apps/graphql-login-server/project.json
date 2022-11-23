@@ -1,7 +1,7 @@
 {
-  "name": "graphql-server",
+  "name": "graphql-login-server",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "apps/graphql-server/src",
+  "sourceRoot": "apps/graphql-login-server/src",
   "projectType": "application",
   "targets": {
     "build": {
@@ -10,14 +10,13 @@
       "options": {
         "target": "node",
         "compiler": "tsc",
-        "outputPath": "dist/apps/graphql-server",
-        "main": "apps/graphql-server/src/main.ts",
-        "tsConfig": "apps/graphql-server/tsconfig.app.json",
+        "outputPath": "dist/apps/graphql-login-server",
+        "main": "apps/graphql-login-server/src/main.ts",
+        "tsConfig": "apps/graphql-login-server/tsconfig.app.json",
         "assets": [
-          "apps/graphql-server/src/assets",
           {
             "glob": "**/schema.graphql",
-            "input": "apps/graphql-server/src/",
+            "input": "apps/graphql-login-server/src/",
             "output": "."
           }
         ]
@@ -29,8 +28,8 @@
           "inspect": false,
           "fileReplacements": [
             {
-              "replace": "apps/graphql-server/src/environments/environment.ts",
-              "with": "apps/graphql-server/src/environments/environment.prod.ts"
+              "replace": "apps/graphql-login-server/src/environments/environment.ts",
+              "with": "apps/graphql-login-server/src/environments/environment.prod.ts"
             }
           ]
         }
@@ -39,11 +38,11 @@
     "serve": {
       "executor": "@nrwl/js:node",
       "options": {
-        "buildTarget": "graphql-server:build"
+        "buildTarget": "graphql-login-server:build"
       },
       "configurations": {
         "production": {
-          "buildTarget": "graphql-server:build:production"
+          "buildTarget": "graphql-login-server:build:production"
         }
       }
     },
@@ -51,14 +50,14 @@
       "executor": "@nrwl/linter:eslint",
       "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": ["apps/graphql-server/**/*.ts"]
+        "lintFilePatterns": ["apps/graphql-login-server/**/*.ts"]
       }
     },
     "test": {
       "executor": "@nrwl/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
       "options": {
-        "jestConfig": "apps/graphql-server/jest.config.ts",
+        "jestConfig": "apps/graphql-login-server/jest.config.ts",
         "passWithNoTests": true
       }
     }

@@ -1,0 +1,11 @@
+type Query {
+  hello: String
+}
+type Mutation {
+  login: loginId!
+}
+
+type loginId {
+  userName: String!
+  id: String!
+}

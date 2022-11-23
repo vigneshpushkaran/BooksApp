@@ -1,0 +1,66 @@
+{
+  "name": "graphql-posts-server",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/graphql-posts-server/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/webpack:webpack",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "target": "node",
+        "compiler": "tsc",
+        "outputPath": "dist/apps/graphql-posts-server",
+        "main": "apps/graphql-posts-server/src/main.ts",
+        "tsConfig": "apps/graphql-posts-server/tsconfig.app.json",
+        "assets": [
+          {
+            "glob": "**/schema.graphql",
+            "input": "apps/graphql-posts-server/src/",
+            "output": "."
+          }
+        ]
+      },
+      "configurations": {
+        "production": {
+          "optimization": true,
+          "extractLicenses": true,
+          "inspect": false,
+          "fileReplacements": [
+            {
+              "replace": "apps/graphql-posts-server/src/environments/environment.ts",
+              "with": "apps/graphql-posts-server/src/environments/environment.prod.ts"
+            }
+          ]
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/js:node",
+      "options": {
+        "buildTarget": "graphql-posts-server:build"
+      },
+      "configurations": {
+        "production": {
+          "buildTarget": "graphql-posts-server:build:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/graphql-posts-server/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "apps/graphql-posts-server/jest.config.ts",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}

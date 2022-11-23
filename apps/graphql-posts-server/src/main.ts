@@ -8,7 +8,7 @@ import express from 'express';
 import http from 'http';
 import cors from 'cors';
 import bodyParser from 'body-parser';
-import { resolvers } from './app/resolver';
+import { resolvers } from './resolvers/resolver';
 import typeDefs from './utils/schema';
 
 // Create the schema, which will be used separately by ApolloServer and
@@ -61,7 +61,7 @@ const start = async () => {
     expressMiddleware(server),
   );
   await httpServer.listen({ port: PORT });
-  console.log(`🚀 Server ready at http://localhost:${PORT}/graphql`);
+  console.log(`🚀 Posts server ready at http://localhost:${PORT}/graphql`);
 };
 
 start();

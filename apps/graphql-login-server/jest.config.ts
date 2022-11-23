@@ -1,6 +1,6 @@
 /* eslint-disable */
 export default {
-  displayName: 'graphql-server',
+  displayName: 'graphql-login-server',
   preset: '../../jest.preset.js',
   globals: {
     'ts-jest': {
@@ -12,5 +12,5 @@ export default {
     '^.+\\.[tj]s$': 'ts-jest',
   },
   moduleFileExtensions: ['ts', 'js', 'html'],
-  coverageDirectory: '../../coverage/packages/graphql-server',
+  coverageDirectory: '../../coverage/packages/graphql-login-server',
 };

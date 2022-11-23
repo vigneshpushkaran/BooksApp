@@ -36,5 +36,5 @@
     "appsDir": "packages",
     "libsDir": "packages"
   },
-  "defaultProject": "graphql-server"
+  "defaultProject": "graphql-posts-server"
 }
