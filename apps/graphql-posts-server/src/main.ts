@@ -9,6 +9,7 @@ import * as http from 'http';
 import * as bodyParser from 'body-parser';
 import { resolvers } from './resolvers/resolver';
 import { typeDefs } from './utils/schema';
+import {loggerPlugin} from './utils/logging';
 
 // Create the schema, which will be used separately by ApolloServer and
 // the WebSocket server.
@@ -31,6 +32,8 @@ const serverCleanup = useServer({ schema }, wsServer);
 const server = new ApolloServer({
   schema,
   plugins: [
+    // logger
+    loggerPlugin,
     // Proper shutdown for the HTTP server.
     ApolloServerPluginDrainHttpServer({ httpServer }),
     // Proper shutdown for the WebSocket server.
